@@ -64,7 +64,7 @@ services:
       - COLLABORATOR_API_URL=https://collaborator-tasks.getepic.com
     restart: unless-stopped
   front:
-    image: hardcoreeng/front
+    image: hardcoreeng/front:latest
     links:
       - mongodb
       - minio
