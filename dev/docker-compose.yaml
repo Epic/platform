@@ -90,6 +90,19 @@ services:
       - STORAGE_CONFIG=${STORAGE_CONFIG}
       - SERVER_PROVIDER=wss
     restart: unless-stopped
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - account
+      - collaborator
+      - transactor
+      - rekoni
+      - front
+    restart: unless-stopped    
   collaborator:
     image: hardcoreeng/collaborator
     links:
